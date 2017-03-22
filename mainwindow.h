@@ -22,6 +22,10 @@ public slots:
     void clearList();
     void addTodoClicked();
     void saveClicked();
+    void selectedItemChanged();
+    void deleteClicked();
+    void upClicked();
+    void downClicked();
 
 private:
     Ui::MainWindow *ui;

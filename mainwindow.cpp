@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QTextStream>
+#include <QDebug>
 
 #include <memory>
 
@@ -13,9 +14,25 @@ MainWindow::MainWindow(const QString& filename, QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->clearButton, SIGNAL(released()), this, SLOT(clearList()));
-    connect(ui->addButton, SIGNAL(released()), this, SLOT(addTodoClicked()));
+    connect(ui->clearButton, SIGNAL(clicked(bool)), this, SLOT(clearList()));
+    connect(ui->addButton, SIGNAL(clicked(bool)), this, SLOT(addTodoClicked()));
     connect(ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(saveClicked()));
+    connect(ui->todoList, SIGNAL(itemSelectionChanged()), this, SLOT(selectedItemChanged()));
+    connect(ui->deleteButton, SIGNAL(clicked(bool)), this, SLOT(deleteClicked()));
+    connect(ui->upButton, SIGNAL(clicked(bool)), this, SLOT(upClicked()));
+    connect(ui->downButton, SIGNAL(clicked(bool)), this, SLOT(downClicked()));
+
+    connect(ui->clearButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
+    connect(ui->addButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
+    connect(ui->deleteButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
+    connect(ui->upButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
+    connect(ui->downButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
+
+    ui->upButton->setDisabled(true);
+    ui->downButton->setDisabled(true);
+
+    ui->todoList->clearSelection();
+    selectedItemChanged();
 
     auto file = openFile(filename);
     if (file)
@@ -36,6 +53,7 @@ void MainWindow::addTodoClicked()
     dialog->show();
     dialog->exec();
     ui->todoList->addItem(todoDesc);
+    //selectedItemChanged();
 }
 
 void MainWindow::parseFile(QFile& file)
@@ -65,6 +83,52 @@ void MainWindow::saveClicked()
 
     QMessageBox::information(this, "Notification", "Saved the list successfully");
 }
+
+void MainWindow::selectedItemChanged()
+{
+    ui->deleteButton->setDisabled(false);
+    ui->doneButton->setDisabled(false);
+    ui->upButton->setDisabled(false);
+    ui->downButton->setDisabled(false);
+
+    if (ui->todoList->currentItem() == nullptr)
+    {
+        ui->deleteButton->setDisabled(true);
+        ui->doneButton->setDisabled(true);
+        ui->upButton->setDisabled(true);
+        ui->downButton->setDisabled(true);
+    }
+
+    int currentRow = ui->todoList->currentRow();
+
+    if (currentRow == 0)
+    {
+        ui->upButton->setDisabled(true);
+    }
+
+    if (currentRow == ui->todoList->count() - 1)
+    {
+        ui->downButton->setDisabled(true);
+    }
+}
+
+void MainWindow::deleteClicked()
+{
+    if (ui->todoList->currentItem() == nullptr)
+    {
+        qDebug() << "Tried to delete with no item selected, bug!";
+        return;
+    }
+
+    auto takenItem = ui->todoList->takeItem(ui->todoList->currentRow());
+    delete takenItem;
+}
+
+void MainWindow::upClicked()
+{}
+
+void MainWindow::downClicked()
+{}
 
 std::unique_ptr<QFile> MainWindow::openFile(const QString &filename)
 {

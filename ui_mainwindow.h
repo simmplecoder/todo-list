@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QListWidget>
@@ -31,6 +32,12 @@ public:
     QAction *actionSave;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_2;
+    QFormLayout *formLayout;
+    QPushButton *upButton;
+    QPushButton *downButton;
+    QPushButton *deleteButton;
+    QPushButton *doneButton;
     QListWidget *todoList;
     QHBoxLayout *horizontalLayout;
     QPushButton *clearButton;
@@ -43,18 +50,82 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(441, 693);
+        MainWindow->setStyleSheet(QStringLiteral("background-color: rgb(136, 138, 133);"));
         actionSave = new QAction(MainWindow);
         actionSave->setObjectName(QStringLiteral("actionSave"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        centralWidget->setStyleSheet(QLatin1String("/*QPushButton\n"
+"{\n"
+"  color: #146eff;\n"
+"  background: rgba(0,0,0,0);\n"
+"  border: solid 5px #6496c8;\n"
+"}\n"
+"\n"
+"QListView\n"
+"{\n"
+"	border: none;\n"
+"	font-size: 15px;\n"
+"}\n"
+"\n"
+"QListView::item\n"
+"{\n"
+"	color: white;\n"
+"}*/"));
         verticalLayout = new QVBoxLayout(centralWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        formLayout = new QFormLayout();
+        formLayout->setSpacing(6);
+        formLayout->setObjectName(QStringLiteral("formLayout"));
+        formLayout->setSizeConstraint(QLayout::SetNoConstraint);
+        upButton = new QPushButton(centralWidget);
+        upButton->setObjectName(QStringLiteral("upButton"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(upButton->sizePolicy().hasHeightForWidth());
+        upButton->setSizePolicy(sizePolicy);
+        upButton->setMinimumSize(QSize(60, 20));
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, upButton);
+
+        downButton = new QPushButton(centralWidget);
+        downButton->setObjectName(QStringLiteral("downButton"));
+        sizePolicy.setHeightForWidth(downButton->sizePolicy().hasHeightForWidth());
+        downButton->setSizePolicy(sizePolicy);
+        downButton->setMinimumSize(QSize(60, 20));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, downButton);
+
+        deleteButton = new QPushButton(centralWidget);
+        deleteButton->setObjectName(QStringLiteral("deleteButton"));
+        deleteButton->setMinimumSize(QSize(60, 20));
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, deleteButton);
+
+        doneButton = new QPushButton(centralWidget);
+        doneButton->setObjectName(QStringLiteral("doneButton"));
+        doneButton->setMinimumSize(QSize(60, 0));
+
+        formLayout->setWidget(3, QFormLayout::LabelRole, doneButton);
+
+
+        horizontalLayout_2->addLayout(formLayout);
+
         todoList = new QListWidget(centralWidget);
         todoList->setObjectName(QStringLiteral("todoList"));
+        todoList->setAutoFillBackground(false);
+        todoList->setStyleSheet(QStringLiteral("background-color: rgb(238, 238, 236);"));
 
-        verticalLayout->addWidget(todoList);
+        horizontalLayout_2->addWidget(todoList);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -93,8 +164,12 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Todo List", Q_NULLPTR));
         actionSave->setText(QApplication::translate("MainWindow", "Save", Q_NULLPTR));
         actionSave->setShortcut(QApplication::translate("MainWindow", "Ctrl+S", Q_NULLPTR));
+        upButton->setText(QApplication::translate("MainWindow", "Up", Q_NULLPTR));
+        downButton->setText(QApplication::translate("MainWindow", "Down", Q_NULLPTR));
+        deleteButton->setText(QApplication::translate("MainWindow", "Delete", Q_NULLPTR));
+        doneButton->setText(QApplication::translate("MainWindow", "Done", Q_NULLPTR));
         clearButton->setText(QApplication::translate("MainWindow", "Clear", Q_NULLPTR));
-        addButton->setText(QApplication::translate("MainWindow", "Add new ...", Q_NULLPTR));
+        addButton->setText(QApplication::translate("MainWindow", "Add new", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
     } // retranslateUi
 

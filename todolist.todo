@@ -2,3 +2,4 @@ implement save with dialog
 implement open with dialog
 implement selectable deletion of items
 implement done list
+fix the bug with shortcuts not being caught
