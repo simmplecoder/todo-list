@@ -30,6 +30,9 @@ class Ui_MainWindow
 {
 public:
     QAction *actionSave;
+    QAction *actionOpenFromHere;
+    QAction *actionOpen;
+    QAction *actionSaveAs;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
@@ -53,6 +56,12 @@ public:
         MainWindow->setStyleSheet(QStringLiteral("background-color: rgb(136, 138, 133);"));
         actionSave = new QAction(MainWindow);
         actionSave->setObjectName(QStringLiteral("actionSave"));
+        actionOpenFromHere = new QAction(MainWindow);
+        actionOpenFromHere->setObjectName(QStringLiteral("actionOpenFromHere"));
+        actionOpen = new QAction(MainWindow);
+        actionOpen->setObjectName(QStringLiteral("actionOpen"));
+        actionSaveAs = new QAction(MainWindow);
+        actionSaveAs->setObjectName(QStringLiteral("actionSaveAs"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setStyleSheet(QLatin1String("/*QPushButton\n"
@@ -153,6 +162,9 @@ public:
 
         menuBar->addAction(menuFile->menuAction());
         menuFile->addAction(actionSave);
+        menuFile->addAction(actionSaveAs);
+        menuFile->addAction(actionOpenFromHere);
+        menuFile->addAction(actionOpen);
 
         retranslateUi(MainWindow);
 
@@ -164,6 +176,12 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Todo List", Q_NULLPTR));
         actionSave->setText(QApplication::translate("MainWindow", "Save", Q_NULLPTR));
         actionSave->setShortcut(QApplication::translate("MainWindow", "Ctrl+S", Q_NULLPTR));
+        actionOpenFromHere->setText(QApplication::translate("MainWindow", "Open from here", Q_NULLPTR));
+        actionOpenFromHere->setShortcut(QApplication::translate("MainWindow", "Ctrl+O", Q_NULLPTR));
+        actionOpen->setText(QApplication::translate("MainWindow", "Open", Q_NULLPTR));
+        actionOpen->setShortcut(QApplication::translate("MainWindow", "Ctrl+Shift+O", Q_NULLPTR));
+        actionSaveAs->setText(QApplication::translate("MainWindow", "Save As", Q_NULLPTR));
+        actionSaveAs->setShortcut(QApplication::translate("MainWindow", "Ctrl+Shift+S", Q_NULLPTR));
         upButton->setText(QApplication::translate("MainWindow", "Up", Q_NULLPTR));
         downButton->setText(QApplication::translate("MainWindow", "Down", Q_NULLPTR));
         deleteButton->setText(QApplication::translate("MainWindow", "Delete", Q_NULLPTR));

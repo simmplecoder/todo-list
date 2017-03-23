@@ -1,5 +1,5 @@
-implement save with dialog
-implement open with dialog
-implement selectable deletion of items
 implement done list
 fix the bug with shortcuts not being caught
+test selectable deletion of items more thoroughely
+test open with dialog more thoroughely
+test save with dialog more thoroughely

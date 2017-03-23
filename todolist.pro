@@ -15,9 +15,11 @@ CONFIG += c++14
 SOURCES += main.cpp\
         mainwindow.cpp \
     addnewdialog.cpp \
+    placeholder.cpp
 
 HEADERS  += mainwindow.h \
     addnewdialog.h \
+    placeholder.h
 
 FORMS    += mainwindow.ui \
     addnewdialog.ui

@@ -14,6 +14,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+
 public:
     MainWindow(const QString& filename = "", QWidget* parent = 0);
     ~MainWindow();
@@ -26,6 +27,9 @@ public slots:
     void deleteClicked();
     void upClicked();
     void downClicked();
+    void openFromHereClicked();
+    void openClicked();
+    void saveAsClicked();
 
 private:
     Ui::MainWindow *ui;
@@ -33,6 +37,7 @@ private:
 private:
     void parseFile(QFile& file);
     std::unique_ptr<QFile> openFile(const QString& filename);
+    void writeIntoFile(QFile& file);
 };
 
 #endif // MAINWINDOW_H
