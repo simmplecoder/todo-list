@@ -45,44 +45,6 @@ QListView::item
          <enum>QLayout::SetNoConstraint</enum>
         </property>
         <item row="0" column="0">
-         <widget class="QPushButton" name="upButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Up</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="downButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Down</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
          <widget class="QPushButton" name="deleteButton">
           <property name="minimumSize">
            <size>
@@ -95,7 +57,7 @@ QListView::item
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
+        <item row="1" column="0">
          <widget class="QPushButton" name="doneButton">
           <property name="minimumSize">
            <size>

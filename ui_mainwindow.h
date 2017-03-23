@@ -37,8 +37,6 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
     QFormLayout *formLayout;
-    QPushButton *upButton;
-    QPushButton *downButton;
     QPushButton *deleteButton;
     QPushButton *doneButton;
     QListWidget *todoList;
@@ -92,36 +90,17 @@ public:
         formLayout->setSpacing(6);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         formLayout->setSizeConstraint(QLayout::SetNoConstraint);
-        upButton = new QPushButton(centralWidget);
-        upButton->setObjectName(QStringLiteral("upButton"));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(upButton->sizePolicy().hasHeightForWidth());
-        upButton->setSizePolicy(sizePolicy);
-        upButton->setMinimumSize(QSize(60, 20));
-
-        formLayout->setWidget(0, QFormLayout::LabelRole, upButton);
-
-        downButton = new QPushButton(centralWidget);
-        downButton->setObjectName(QStringLiteral("downButton"));
-        sizePolicy.setHeightForWidth(downButton->sizePolicy().hasHeightForWidth());
-        downButton->setSizePolicy(sizePolicy);
-        downButton->setMinimumSize(QSize(60, 20));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, downButton);
-
         deleteButton = new QPushButton(centralWidget);
         deleteButton->setObjectName(QStringLiteral("deleteButton"));
         deleteButton->setMinimumSize(QSize(60, 20));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, deleteButton);
+        formLayout->setWidget(0, QFormLayout::LabelRole, deleteButton);
 
         doneButton = new QPushButton(centralWidget);
         doneButton->setObjectName(QStringLiteral("doneButton"));
         doneButton->setMinimumSize(QSize(60, 0));
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, doneButton);
+        formLayout->setWidget(1, QFormLayout::LabelRole, doneButton);
 
 
         horizontalLayout_2->addLayout(formLayout);
@@ -182,8 +161,6 @@ public:
         actionOpen->setShortcut(QApplication::translate("MainWindow", "Ctrl+Shift+O", Q_NULLPTR));
         actionSaveAs->setText(QApplication::translate("MainWindow", "Save As", Q_NULLPTR));
         actionSaveAs->setShortcut(QApplication::translate("MainWindow", "Ctrl+Shift+S", Q_NULLPTR));
-        upButton->setText(QApplication::translate("MainWindow", "Up", Q_NULLPTR));
-        downButton->setText(QApplication::translate("MainWindow", "Down", Q_NULLPTR));
         deleteButton->setText(QApplication::translate("MainWindow", "Delete", Q_NULLPTR));
         doneButton->setText(QApplication::translate("MainWindow", "Done", Q_NULLPTR));
         clearButton->setText(QApplication::translate("MainWindow", "Clear", Q_NULLPTR));

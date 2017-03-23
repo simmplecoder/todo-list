@@ -20,8 +20,8 @@ MainWindow::MainWindow(const QString& filename, QWidget *parent) :
     connect(ui->addButton, SIGNAL(clicked(bool)), this, SLOT(addTodoClicked()));
     connect(ui->todoList, SIGNAL(itemSelectionChanged()), this, SLOT(selectedItemChanged()));
     connect(ui->deleteButton, SIGNAL(clicked(bool)), this, SLOT(deleteClicked()));
-    connect(ui->upButton, SIGNAL(clicked(bool)), this, SLOT(upClicked()));
-    connect(ui->downButton, SIGNAL(clicked(bool)), this, SLOT(downClicked()));
+//    connect(ui->upButton, SIGNAL(clicked(bool)), this, SLOT(upClicked()));
+//    connect(ui->downButton, SIGNAL(clicked(bool)), this, SLOT(downClicked()));
     connect(ui->actionOpenFromHere, SIGNAL(triggered(bool)), this, SLOT(openFromHereClicked()));
     connect(ui->actionOpen, SIGNAL(triggered(bool)), this, SLOT(openClicked()));
     connect(ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(saveClicked()));
@@ -30,16 +30,7 @@ MainWindow::MainWindow(const QString& filename, QWidget *parent) :
     connect(ui->clearButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
     connect(ui->addButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
     connect(ui->deleteButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
-    connect(ui->upButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
-    connect(ui->downButton, SIGNAL(clicked(bool)), this, SLOT(selectedItemChanged()));
     connect(ui->actionOpen, SIGNAL(triggered(bool)), this, SLOT(selectedItemChanged()));
-
-
-    ui->upButton->setDisabled(true);
-    ui->downButton->setDisabled(true);
-
-    ui->todoList->clearSelection();
-
 
     auto file = openFile(filename);
     if (file)
@@ -93,28 +84,28 @@ void MainWindow::selectedItemChanged()
 {
     ui->deleteButton->setDisabled(false);
     ui->doneButton->setDisabled(false);
-    ui->upButton->setDisabled(false);
-    ui->downButton->setDisabled(false);
+//    ui->upButton->setDisabled(false);
+//    ui->downButton->setDisabled(false);
 
     if (ui->todoList->currentItem() == nullptr)
     {
         ui->deleteButton->setDisabled(true);
         ui->doneButton->setDisabled(true);
-        ui->upButton->setDisabled(true);
-        ui->downButton->setDisabled(true);
+//        ui->upButton->setDisabled(true);
+//        ui->downButton->setDisabled(true);
     }
 
-    int currentRow = ui->todoList->currentRow();
+//    int currentRow = ui->todoList->currentRow();
 
-    if (currentRow == 0)
-    {
-        ui->upButton->setDisabled(true);
-    }
+//    if (currentRow == 0)
+//    {
+//        ui->upButton->setDisabled(true);
+//    }
 
-    if (currentRow == ui->todoList->count() - 1)
-    {
-        ui->downButton->setDisabled(true);
-    }
+//    if (currentRow == ui->todoList->count() - 1)
+//    {
+//        ui->downButton->setDisabled(true);
+//    }
 }
 
 void MainWindow::deleteClicked()
