@@ -83,14 +83,14 @@ void MainWindow::parseFile(QFile& file)
 void MainWindow::selectedItemChanged()
 {
     ui->deleteButton->setDisabled(false);
-    ui->doneButton->setDisabled(false);
+//    ui->doneButton->setDisabled(false);
 //    ui->upButton->setDisabled(false);
 //    ui->downButton->setDisabled(false);
 
     if (ui->todoList->currentItem() == nullptr)
     {
         ui->deleteButton->setDisabled(true);
-        ui->doneButton->setDisabled(true);
+//        ui->doneButton->setDisabled(true);
 //        ui->upButton->setDisabled(true);
 //        ui->downButton->setDisabled(true);
     }

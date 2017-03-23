@@ -38,11 +38,10 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QFormLayout *formLayout;
     QPushButton *deleteButton;
-    QPushButton *doneButton;
+    QPushButton *addButton;
     QListWidget *todoList;
     QHBoxLayout *horizontalLayout;
     QPushButton *clearButton;
-    QPushButton *addButton;
     QMenuBar *menuBar;
     QMenu *menuFile;
 
@@ -96,11 +95,10 @@ public:
 
         formLayout->setWidget(0, QFormLayout::LabelRole, deleteButton);
 
-        doneButton = new QPushButton(centralWidget);
-        doneButton->setObjectName(QStringLiteral("doneButton"));
-        doneButton->setMinimumSize(QSize(60, 0));
+        addButton = new QPushButton(centralWidget);
+        addButton->setObjectName(QStringLiteral("addButton"));
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, doneButton);
+        formLayout->setWidget(1, QFormLayout::LabelRole, addButton);
 
 
         horizontalLayout_2->addLayout(formLayout);
@@ -122,11 +120,6 @@ public:
         clearButton->setObjectName(QStringLiteral("clearButton"));
 
         horizontalLayout->addWidget(clearButton);
-
-        addButton = new QPushButton(centralWidget);
-        addButton->setObjectName(QStringLiteral("addButton"));
-
-        horizontalLayout->addWidget(addButton);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -162,9 +155,8 @@ public:
         actionSaveAs->setText(QApplication::translate("MainWindow", "Save As", Q_NULLPTR));
         actionSaveAs->setShortcut(QApplication::translate("MainWindow", "Ctrl+Shift+S", Q_NULLPTR));
         deleteButton->setText(QApplication::translate("MainWindow", "Delete", Q_NULLPTR));
-        doneButton->setText(QApplication::translate("MainWindow", "Done", Q_NULLPTR));
-        clearButton->setText(QApplication::translate("MainWindow", "Clear", Q_NULLPTR));
         addButton->setText(QApplication::translate("MainWindow", "Add new", Q_NULLPTR));
+        clearButton->setText(QApplication::translate("MainWindow", "Clear", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
     } // retranslateUi
 

@@ -58,15 +58,9 @@ QListView::item
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QPushButton" name="doneButton">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
+         <widget class="QPushButton" name="addButton">
           <property name="text">
-           <string>Done</string>
+           <string>Add new</string>
           </property>
          </widget>
         </item>
@@ -90,13 +84,6 @@ QListView::item
        <widget class="QPushButton" name="clearButton">
         <property name="text">
          <string>Clear</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="addButton">
-        <property name="text">
-         <string>Add new</string>
         </property>
        </widget>
       </item>
